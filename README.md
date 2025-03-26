@@ -4,8 +4,9 @@ Ce projet consiste en la conception et le développement d'une application de ge
 
 __Auteurs__ : 
 - Henintsoa RAMAKAVELO
-- Pierre Steve NGWEHA PENI 
 - Jeff DJOUSSE ZANGUE
+- Pierre Steve NGWEHA PENI 
+
 
 
 
