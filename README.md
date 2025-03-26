@@ -55,6 +55,7 @@ __Auteurs__ :
 | Compiling + Deploiement | Mettre l'application à disposition | ???/@all | A faire | **X** | 
 
 **Repartition** : Henin (3) ; Jeff (3) ; Steve (3)  -- **Avancement** : 43.22%
+
 Score Avancement = (0.87+ 0.78+ 0.99+ 0.65+ 0+ 0.6+ 0+ 0+ 0)/9
 
 
