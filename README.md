@@ -39,10 +39,63 @@ __Auteurs__ :
     - **Container** : Docker, jenkins
     - **CI/CD** : GitLab CI/CD
 
+## Taches : 
+
+| Tache | Description | Assigné à | Statut | Notes du dernier ***~.X*** |
+|-------|-------------|-----------|--------|------------------|
+| Base | SetUp du projet | Jeff & Henin | Deboggage nec. **(87%)** | **X** | 
+| Permissions | Permettre les accès par permissions | Henin | En cours **(78%)** | Corriger l'assignation des *roles + restriction *middleware ***~H*** | 
+| Data-Tickets | Mettre en place les modèles et ressources des Tickets | Jeff | En cours **(99%)** | **X** |
+| Tickets | Mettre en place le system de Ticket | Jeff | En cours **(65%)** | Manque plus que le *TicketController et le connecter à une *Vue ***~H*** | 
+| Vues | Visuels et accès aux microservices | Steve (?) | A faire | **X** | 
+| Gestion Ressources | Permettre à l'admin la modification dynamique de la BDD | Henin | En cours **(60%)** | c.f *Permissions ***~H*** | 
+| Container | Mettre en place le container Docker | Steve |A faire | **X** | 
+| CICD | Mettre en place les pipelines github d'après deploiement | Steve (?) | A faire | **X** | 
+| Compiling + Deploiement | Mettre l'application à disposition | ???/@all | A faire | **X** | 
+
+**Repartition** : Henin (3) ; Jeff (3) ; Steve (3)  -- **Avancement** : 43.22%
+Score Avancement = (0.87+ 0.78+ 0.99+ 0.65+ 0+ 0.6+ 0+ 0+ 0)/9
+
 
 ## Demarrage de l'application 
 
 0. **Autorisations** : User : "Admin" // Mail : "admin@mail.com" // MDP : "admin1234"
+
+### HORS DOCKER - DevMode ###
+1. Copier le projet :
+```cmd
+PS C:\xampp\htdocs\ITicket> cp .env.example .env        !--Copier le fichier environnement
+
+PS C:\xampp\htdocs\ITicket> php artisan key:generate    !--Crée une clé d'application
+
+PS C:\xampp\htdocs\ITicket> php artisan install         !--Installe les dépendances si pas déja fait
+
+php artisan vendor:publish --provider="Spatie\Permission\PermissionServiceProvider"
+                                                        !-- Publie les permissions Spatie afin de les accéder
+
+PS C:\xampp\htdocs\ITicket>php artisan migrate          !--Migrer la BDD  
+
+PS C:\xampp\htdocs\ITicket>php artisan tinker           !-- Créer les roles 
+>use Spatie\Permission\Models\Role;
+>Role::create(['name' => 'employee']);
+>Role::create(['name' => 'admin']);
+>Role::create(['name' => 'technicien']);
+>Role::create(['name' => 'unknown']);
+
+!-- Ctrl+c pour quitter ou "exit;"
+
+!-- Vous pouvez utiliser filament ou le seeder pour créer le premier utilisateur
+PS C:\xampp\htdocs\ITicket>({php artisan database:seed} // {php artisan make:filament-user}) 
+
+```
+   
+3. Vérifier les instances:
+
+   - **DB** : Verifier le bon setup de la *BDD* et qu'elle a été créé et migrer
+   - **Dépendances** :  Verifier que ces dépendances sont installé : {Breeze, NPM, Livewire, Filament, Spatie}
+
+
+4. Lancer le serveur :
 
 ```cmd
 PS C:\xampp\htdocs\ITicket> php artisan serve
@@ -52,4 +105,9 @@ PS C:\xampp\htdocs\ITicket> php artisan serve
   Press Ctrl+C to stop the server
 
 ```
+x. 
 
+
+### DOCKER  ###
+
+ **A compléter**
