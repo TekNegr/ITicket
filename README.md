@@ -46,7 +46,7 @@ __Auteurs__ :
 |-------|-------------|-----------|--------|------------------|
 | Base | SetUp du projet | Jeff & Henin | Deboggage nec. **(87%)** | **X** | 
 | Permissions | Permettre les accès par permissions | Henin | En cours **(78%)** | Corriger l'assignation des *roles + restriction *middleware ***~H*** | 
-| Data-Tickets | Mettre en place les modèles et ressources des Tickets | Jeff | En cours **(99%)** | **X** |
+| Data-Tickets | Mettre en place les modèles et ressources des Tickets | Jeff | En cours **(99%)** | c.f *Tickets ***~H*** |
 | Tickets | Mettre en place le system de Ticket | Jeff | En cours **(65%)** | Manque plus que le *TicketController et le connecter à une *Vue ***~H*** | 
 | Vues | Visuels et accès aux microservices | Steve (?) | A faire | **X** | 
 | Gestion Ressources | Permettre à l'admin la modification dynamique de la BDD | Henin | En cours **(60%)** | c.f *Permissions ***~H*** | 
