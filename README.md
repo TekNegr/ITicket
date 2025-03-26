@@ -85,8 +85,8 @@ PS C:\xampp\htdocs\ITicket>php artisan tinker           !-- Créer les roles
 !-- Ctrl+c pour quitter ou "exit;"
 
 !-- Vous pouvez utiliser filament ou le seeder pour créer le premier utilisateur
-PS C:\xampp\htdocs\ITicket>({php artisan database:seed} // {php artisan make:filament-user}) 
-
+PS C:\xampp\htdocs\ITicket>({php artisan database:seed} // {php artisan make:filament-user})  
+!-- En choisir UN SEUL
 ```
    
 3. Vérifier les instances:
