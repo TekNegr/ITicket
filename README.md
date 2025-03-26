@@ -39,10 +39,43 @@ __Auteurs__ :
     - **Container** : Docker, jenkins
     - **CI/CD** : GitLab CI/CD
 
+## Taches : 
+
+| Tache | Description | Assigné à | Statut |
+|-------|-------------|-----------|--------|
+| Base | SetUp du projet | Jeff & Henin | Deboggage nec |
+| Permissions | Permettre les accès par permissions | Henin | En cours (78%) |
+| Data-Tickets | Mettre en place les modèles et ressources des Tickets | Jeff | En cours (50%) |
+| Tickets | Mettre en place le system de Ticket | Jeff | En cours (50%) |
+| Vues | Visuels et accès aux microservices | Steve (?) | A faire |
+| Gestion Ressources | Permettre à l'admin la modification dynamique de la BDD | Henin | En cours (30%) |
+| Container | Mettre en place le container Docker | Steve |A faire |
+| CICD | Mettre en place les pipelines github d'après deploiement | Steve (?) | A faire |
+
+**Repartition** : Henin (3) ; Jeff (3) ; Steve (3)  -- **Avancement** : 34%
+
 
 ## Demarrage de l'application 
 
 0. **Autorisations** : User : "Admin" // Mail : "admin@mail.com" // MDP : "admin1234"
+
+### HORS DOCKER - DevMode ###
+1. Copier le projet :
+```cmd
+PS C:\xampp\htdocs\ITicket> cp .env.example .env        --Copier le fichier environnement
+
+PS C:\xampp\htdocs\ITicket> php artisan key:generate    --Crée une clé d'application
+
+PS C:\xampp\htdocs\ITicket> php artisan install         --Installe les dépendances si pas déja fait
+
+PS C:\xampp\htdocs\ITicket>php artisan migrate          --Migrer la BDD  
+
+```
+   
+3. Vérifier les instances:
+
+   
+4. Lancer le serveur :
 
 ```cmd
 PS C:\xampp\htdocs\ITicket> php artisan serve
@@ -52,4 +85,4 @@ PS C:\xampp\htdocs\ITicket> php artisan serve
   Press Ctrl+C to stop the server
 
 ```
-
+x. 
