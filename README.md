@@ -3,9 +3,10 @@
 Ce projet consiste en la conception et le développement d'une application de gestion de tickets informatiques destinée à une entreprise. L'objectif est de fournir une solution efficace pour le suivi, la gestion et la résolution des demandes informatiques. Une fois développée, l'application sera déployée pour être utilisée par les employés et les équipes techniques, facilitant ainsi la communication et l'organisation des tâches liées au support informatique.
 
 __Auteurs__ : 
+- Henintsoa RAMAKAVELO
 - Pierre Steve NGWEHA PENI 
 - Jeff DJOUSSE ZANGUE
-- Henintsoa RAMAKAVELO
+
 
 
 ## Cahier des charges 
