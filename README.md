@@ -7,7 +7,10 @@ __Auteurs__ :
 - Jeff DJOUSSE ZANGUE
 - Pierre Steve NGWEHA PENI 
 
-
+## Sommaire
+1. [**Cahier des charges**](#cahier-des-charges)
+2. [**Taches**](#taches)
+3. [**Demarrage**](#demarrage-de-lapplication)
 
 
 ## Cahier des charges 
