@@ -43,7 +43,7 @@ __Auteurs__ :
 
 | Tache | Description | Assigné à | Statut |
 |-------|-------------|-----------|--------|
-| Base | SetUp du projet | Jeff & Henin | Deboggage nec |
+| Base | SetUp du projet | Jeff & Henin | Deboggage nec. |
 | Permissions | Permettre les accès par permissions | Henin | En cours (78%) |
 | Data-Tickets | Mettre en place les modèles et ressources des Tickets | Jeff | En cours (50%) |
 | Tickets | Mettre en place le system de Ticket | Jeff | En cours (50%) |
@@ -51,8 +51,9 @@ __Auteurs__ :
 | Gestion Ressources | Permettre à l'admin la modification dynamique de la BDD | Henin | En cours (30%) |
 | Container | Mettre en place le container Docker | Steve |A faire |
 | CICD | Mettre en place les pipelines github d'après deploiement | Steve (?) | A faire |
+| Compiling + Deploiement | Mettre l'application à disposition | ??? | A faire |
 
-**Repartition** : Henin (3) ; Jeff (3) ; Steve (3)  -- **Avancement** : 34%
+**Repartition** : Henin (3) ; Jeff (3) ; Steve (3)  -- **Avancement** : 30.8%
 
 
 ## Demarrage de l'application 
