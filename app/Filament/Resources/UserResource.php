@@ -37,6 +37,7 @@ class UserResource extends Resource
                     ->options(Role::pluck('name', 'name'))
                     ->default('unknown')
                     ->required()
+                    ->relationship('roles', 'name')
                     ->native(false),
             ]);
         }
@@ -76,12 +77,5 @@ class UserResource extends Resource
             'create' => Pages\CreateUser::route('/create'),
             'edit' => Pages\EditUser::route('/{record}/edit'),
         ];
-    }
-
-    public static function afterSave(Form $form, $record): void
-    {
-        if ($form->getState()['role']) {
-            $record->syncRoles([$form->getState()['role']]);
-        }
     }
 }

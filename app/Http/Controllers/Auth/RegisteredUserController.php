@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\Ticket;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -39,6 +40,12 @@ class RegisteredUserController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+        ]);
+
+        Ticket::create([
+            'user_id' => $user->id,
+            'title' => 'Bienvenue',
+            'content' => 'Bienvenue sur notre plateforme de gestion de tickets.',
         ]);
 
         $user->assignRole('unknown');
