@@ -72,13 +72,14 @@ class TicketResource extends Resource
                 TextColumn::make('titre')->searchable()->sortable(),
                 TextColumn::make('statut')->sortable(),
                 TextColumn::make('priorite')->sortable(),
-                TextColumn::make('assignedUser.name')->label('Assigné à')->sortable(),
+                // TextColumn::make('assignedUser.name')->label('Assigné à')->sortable(),
             ])
             ->filters([
                 //
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
