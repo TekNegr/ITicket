@@ -12,7 +12,7 @@ class TicketController extends Controller
      */
     public function index()
     {
-        $tickets = Ticket::all();
+        $tickets = Ticket::where('id_employe', auth()->id())->get();
         return view('tickets.index', compact('tickets'));
     }
 
