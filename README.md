@@ -55,9 +55,9 @@ __Auteurs__ :
 | Tickets | Mettre en place le system de Ticket | Jeff | En cours **(65%)** | Manque plus que le *TicketController et le connecter à une *Vue ***~H*** | 
 | Vues | Visuels et accès aux microservices | Steve (?) | A faire | **X** | 
 | Gestion Ressources | Permettre à l'admin la modification dynamique de la BDD | Henin | En cours **(60%)** | c.f *Permissions ***~H*** | 
-| Container | Mettre en place le container Docker | Steve |A faire | **X** | 
-| CICD | Mettre en place les pipelines github d'après deploiement | Steve (?) | A faire | **X** | 
-| Compiling + Deploiement | Mettre l'application à disposition | ???/@all | A faire | **X** | 
+| Container | Mettre en place le container Docker | Steve |en cour | **X** | 
+| CICD | Mettre en place les pipelines github d'après deploiement | Steve  | en cour | **X** | 
+| Compiling + Deploiement | Mettre l'application à disposition | ???/@all | en cour | **X** | 
 
 **Repartition** : Henin (3) ; Jeff (3) ; Steve (3)  -- **Avancement** : 43.22%
 
