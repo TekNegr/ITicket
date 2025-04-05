@@ -16,6 +16,12 @@ class TicketController extends Controller
         return view('tickets.index', compact('tickets'));
     }
 
+    public function technicianView()
+    {
+        $tickets = Ticket::with('employe')->get(); // Charge les tickets avec les informations de l'employé
+        return view('tickets.technician', compact('tickets'));
+    }
+
     /**
      * Show the form for creating a new ticket.
      */
