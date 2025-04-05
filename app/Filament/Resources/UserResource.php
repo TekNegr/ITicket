@@ -37,6 +37,7 @@ class UserResource extends Resource
                     ->options(Role::pluck('name', 'name'))
                     ->default('unknown')
                     ->required()
+                    ->relationship('roles', 'name')
                     ->native(false),
             ]);
         }

@@ -30,13 +30,14 @@ class TicketResource extends Resource
             ->schema([
                 TextInput::make('titre')->required()->maxLength(255),
                 Textarea::make('description')->required()->rows(5),
-
+                
                 Select::make('statut')
                     ->label('Statut')
                     ->options([
-                        'ouvert' => 'Ouvert',
-                        'en_cours' => 'En cours',
-                        'ferme' => 'Fermé',
+                        'Ouvert' => 'Ouvert',
+                        'En cours' => 'En cours',
+                        'Résolu' => 'Résolu',
+                        'Fermé' => 'Fermé',
                     ])
                     ->required(),
 

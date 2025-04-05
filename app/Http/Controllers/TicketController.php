@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Ticket;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
+
+use Illuminate\Support\Facades\Auth;
 
 class TicketController extends Controller
 {
@@ -12,7 +15,7 @@ class TicketController extends Controller
      */
     public function index()
     {
-        $tickets = Ticket::where('id_employe', auth()->id())->get();
+        $tickets = Ticket::where('id_employe', Auth::user()->id)->get();
         return view('tickets.index', compact('tickets'));
     }
 
@@ -37,6 +40,8 @@ class TicketController extends Controller
             'id_employe' => 'required|exists:users,id',
             'id_technicien' => 'nullable|exists:users,id',
         ]);
+
+        Log::info('Creating a new ticket', $validated);
 
         Ticket::create($validated);
 
@@ -72,6 +77,7 @@ class TicketController extends Controller
             'id_employe' => 'required|exists:users,id',
             'id_technicien' => 'nullable|exists:users,id',
         ]);
+        dd($validated);
 
         $ticket->update($validated);
 
