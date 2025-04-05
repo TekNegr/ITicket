@@ -19,6 +19,12 @@ class TicketController extends Controller
         return view('tickets.index', compact('tickets'));
     }
 
+    public function technicianView()
+    {
+        $tickets = Ticket::with('employe')->get(); // Charge les tickets avec les informations de l'employé
+        return view('tickets.technician', compact('tickets'));
+    }
+
     /**
      * Show the form for creating a new ticket.
      */
@@ -32,22 +38,23 @@ class TicketController extends Controller
      */
     public function store(Request $request)
     {
+        // Validation des données
         $validated = $request->validate([
             'titre' => 'required|string|max:255',
             'description' => 'required|string',
             'statut' => 'required|in:Ouvert,En cours,Résolu,Fermé',
             'priorite' => 'required|in:Faible,Moyenne,Élevée,Critique',
-            'id_employe' => 'required|exists:users,id',
-            'id_technicien' => 'nullable|exists:users,id',
         ]);
-
-        Log::info('Creating a new ticket', $validated);
-
+    
+        // Ajout de l'ID de l'employé connecté
+        $validated['id_employe'] = auth()->id();
+    
+        // Création du ticket
         Ticket::create($validated);
-
+    
+        // Redirection avec un message de succès
         return redirect()->route('tickets.index')->with('success', 'Ticket créé avec succès.');
     }
-
     /**
      * Display the specified ticket.
      */
