@@ -75,7 +75,7 @@ PS C:\xampp\htdocs\ITicket> cp .env.example .env        !--Copier le fichier env
 
 PS C:\xampp\htdocs\ITicket> php artisan key:generate    !--Crée une clé d'application
 
-PS C:\xampp\htdocs\ITicket> php artisan install         !--Installe les dépendances si pas déja fait
+PS C:\xampp\htdocs\ITicket> composer install         !--Installe les dépendances si pas déja fait
 
 php artisan vendor:publish --provider="Spatie\Permission\PermissionServiceProvider"
                                                         !-- Publie les permissions Spatie afin de les accéder
