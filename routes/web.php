@@ -18,5 +18,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 Route::resource('tickets', TicketController::class)->middleware('auth');
-Route::get('/tickets/technician', [TicketController::class, 'technicianView'])->name('tickets.technician')->middleware('auth');
+#Route::get('/tickets/technician', [TicketController::class, 'technicianView'])->name('tickets.technician')->middleware('auth');
+Route::middleware(['auth', 'role:technician'])->group(function () {
+    Route::get('/tickets/technician', [TicketController::class, 'technicianView'])->name('tickets.technician');
+});
 require __DIR__.'/auth.php';
