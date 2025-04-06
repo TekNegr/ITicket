@@ -17,13 +17,12 @@
                     </x-nav-link>
                 </div>
 
-                @if(Auth::user()->roles->first()->name == 'admin')
+                @if(Auth::check() && Auth::user()->roles->isNotEmpty() && Auth::user()->roles->first()->name == 'admin')
                     <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                         <x-nav-link :href="route('filament.admin')" :active="request()->routeIs('filament.pages.dashboard')">
                             {{ __('Admin') }}
                         </x-nav-link>
                     </div>
-                    {{-- This part now refers to the Filament panel called Admin --}}
                 @endif
                     
             </div>
