@@ -39,7 +39,7 @@ class CheckUserRole
         $redirectRoutes = [
             'admin' => 'filament.admin.pages.dashboard',
             'technicien' => 'filament.technicien.pages.dashboard',
-            'employee' => 'fliament.employee.pages.dashboard',
+            'employee' => 'filament.employee.pages.dashboard',
 
         ];
 
