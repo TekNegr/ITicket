@@ -118,4 +118,43 @@ x.
 
 ### DOCKER  ###
 
- **A compléter**
+# ITicket Application
+
+## Prérequis
+- Docker
+- Docker Compose
+
+## Installation
+1. Clonez le dépôt :
+   ```bash
+   git clone <url-du-repo>
+   cd ITicket
+   ```
+
+2. Créez un fichier `.env` à partir de `.env.example` :
+   ```bash
+   cp .env.example .env
+   ```
+
+3. Lancez les conteneurs :
+   ```bash
+   docker-compose build
+
+   docker-compose up -d
+   ```
+4. Effectuez les migrations de la base de données :
+
+      ```bash
+
+      docker-compose exec app php artisan migrate
+      ```
+5. Installez les dépendances front-end si nécessaire :
+         ```bash
+docker-compose exec php npm install vite laravel-vite-plugin --save-dev           docker-compose exec php npm run build                                                  
+         ```
+         - **Vite** : Assurez-vous que le serveur de développement Vite est opérationnel pour le rendu des assets front-end.
+
+           docker-compose exec php npm list vite    
+
+## Notes
+- Assurez-vous que les ports `3000` et `5432` sont disponibles sur votre machine.
