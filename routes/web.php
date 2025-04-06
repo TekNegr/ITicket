@@ -31,4 +31,9 @@ Route::middleware('auth')->group(function () {
 });
 Route::resource('tickets', TicketController::class)->middleware('auth');
 Route::get('/tickets/technician', [TicketController::class, 'technicianView'])->name('tickets.technician')->middleware('auth');
+
+
+Route::put('/tickets/{ticket}', [TicketController::class, 'update'])->name('tickets.update');
+
+
 require __DIR__.'/auth.php';
