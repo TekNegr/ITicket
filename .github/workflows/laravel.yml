@@ -66,7 +66,7 @@ jobs:
       - name: Run migrations
         env:
           DB_CONNECTION: pgsql
-          DB_HOST: 127.0.0.1
+          DB_HOST: db
           DB_PORT: 5432
           DB_DATABASE: iticket
           DB_USERNAME: user
@@ -76,7 +76,7 @@ jobs:
       - name: Run tests
         env:
           DB_CONNECTION: pgsql
-          DB_HOST: 127.0.0.1
+          DB_HOST: db
           DB_PORT: 5432
           DB_DATABASE: iticket
           DB_USERNAME: user
