@@ -17,10 +17,11 @@ Route::get('/dashboard', function () {
     $redirectRoutes = [
         'admin' => 'filament.admin.pages.dashboard',
         'technicien' => 'filament.technicien.pages.dashboard',
-        'employee' => 'fliament.employee.pages.dashboard',
+        'employee' => 'filament.employee.pages.dashboard',
     ];
-    $redirectRoute = $redirectRoutes[$role] ?? 'dashboard';
-    return view($redirectRoute);
+    $redirectRoute = $redirectRoutes[$role] ?? 'login';
+
+    return redirect()->route($redirectRoute);
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
