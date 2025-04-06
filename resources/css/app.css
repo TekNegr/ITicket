@@ -1,3 +1,19 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+    --text-color: #1a1a1a;
+}
+
+.dark {
+    --text-color: #e5e7eb;
+}
+
+.ticket_text_color {
+    color: var(--text-color) !important;
+}
+
+.fi{
+    color: var(--text-color) !important;
+}

@@ -30,13 +30,14 @@ class TicketResource extends Resource
             ->schema([
                 TextInput::make('titre')->required()->maxLength(255),
                 Textarea::make('description')->required()->rows(5),
-
+                
                 Select::make('statut')
                     ->label('Statut')
                     ->options([
-                        'ouvert' => 'Ouvert',
-                        'en_cours' => 'En cours',
-                        'ferme' => 'Fermé',
+                        'Ouvert' => 'Ouvert',
+                        'En cours' => 'En cours',
+                        'Résolu' => 'Résolu',
+                        'Fermé' => 'Fermé',
                     ])
                     ->required(),
 
@@ -72,13 +73,14 @@ class TicketResource extends Resource
                 TextColumn::make('titre')->searchable()->sortable(),
                 TextColumn::make('statut')->sortable(),
                 TextColumn::make('priorite')->sortable(),
-                TextColumn::make('assignedUser.name')->label('Assigné à')->sortable(),
+                // TextColumn::make('assignedUser.name')->label('Assigné à')->sortable(),
             ])
             ->filters([
                 //
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
