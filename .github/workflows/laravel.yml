@@ -73,6 +73,16 @@ jobs:
           DB_PASSWORD: password
         run: php artisan migrate --force
 
+      - name: Generate application key
+        env:
+          DB_CONNECTION: pgsql
+          DB_HOST: 127.0.0.1
+          DB_PORT: 5432
+          DB_DATABASE: iticket
+          DB_USERNAME: user
+          DB_PASSWORD: password
+        run: php artisan key:generate
+
       - name: Install PHPUnit
         run: composer require --dev phpunit/phpunit
 
