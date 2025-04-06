@@ -38,3 +38,6 @@ services:
       MYSQL_PASSWORD: ""
     ports:
       - "3306:3306"
+
+#### Instructions pour l'utilisation de Docker Compose
+# 1. Assurez-vous d'avoir Docker et Docker Compose installés sur votre machine.

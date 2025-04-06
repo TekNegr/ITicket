@@ -56,12 +56,12 @@ __Auteurs__ :
 | Vues | Visuels et accès aux microservices | Steve (?) | A faire | **X** | 
 | Gestion Ressources | Permettre à l'admin la modification dynamique de la BDD | Henin | En cours **(60%)** | c.f *Permissions ***~H*** | 
 | Container | Mettre en place le container Docker | Steve |Terminer | **fonctionnel** | 
-| CICD | Mettre en place les pipelines github d'après deploiement | Steve  | en cour | **mise en place de la pipeline** | 
+| CICD | Mettre en place les pipelines githubAction et jenkins d'après deploiement | Steve  | en cour | **phase de test de la pipeline** | 
 | Compiling + Deploiement | Mettre l'application à disposition | ???/@all | en cour | **X** | 
 
 **Repartition** : Henin (3) ; Jeff (3) ; Steve (3)  -- **Avancement** : 60.22%
 
-Score Avancement = (0.87+ 0.78+ 0.99+ 0.65+ 0+ 0.6+ 0.99+ 0.6+ 0)/9
+Score Avancement = (0.87+ 0.78+ 0.99+ 0.65+ 0+ 0.6+ 0.99+ 0.7+ 0.8)/9
 
 
 ## [Demarrage de l'application](#sommaire)
