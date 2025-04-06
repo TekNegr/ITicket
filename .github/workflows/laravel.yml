@@ -73,6 +73,9 @@ jobs:
           DB_PASSWORD: password
         run: php artisan migrate --force
 
+      - name: Copy .env file
+        run: cp .env.example .env
+
       - name: Generate application key
         env:
           DB_CONNECTION: pgsql
