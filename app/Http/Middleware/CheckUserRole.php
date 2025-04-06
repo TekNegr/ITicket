@@ -33,15 +33,14 @@ class CheckUserRole
         $roleRoutes = [
             'admin' => ['filament.admin.*'],
             'technicien' => ['filament.technicien.*'],
-            'employee' => ['filament.employe.*'],
-            'unknown' => ['*'],
+            'employee' => ['filament.employee.*'],
         ];
 
         $redirectRoutes = [
             'admin' => 'filament.admin.pages.dashboard',
             'technicien' => 'filament.technicien.pages.dashboard',
-            'employee' => 'fliament.employee.dashboard',
-            'unknown' => 'dashboard',
+            'employee' => 'fliament.employee.pages.dashboard',
+
         ];
 
         $currentRoute = $request->route()->getName();
@@ -52,7 +51,7 @@ class CheckUserRole
 
         if (!$allowed) {
             session()->flash('error', 'Vous n\'êtes pas autorisé à accéder à cette section.');
-            return redirect()->route($redirectRoutes[$role] ?? 'home');
+            return redirect()->route($redirectRoutes[$role] ?? 'dashboard');
         }
 
         return $next($request);
