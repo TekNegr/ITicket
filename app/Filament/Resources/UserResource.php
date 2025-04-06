@@ -78,11 +78,4 @@ class UserResource extends Resource
             'edit' => Pages\EditUser::route('/{record}/edit'),
         ];
     }
-
-    public static function afterSave(Form $form, $record): void
-    {
-        if ($form->getState()['role']) {
-            $record->syncRoles([$form->getState()['role']]);
-        }
-    }
 }

@@ -13,17 +13,18 @@ __Auteurs__ :
 3. [**Demarrage**](#demarrage-de-lapplication)
 
 
-## Cahier des charges 
-### 1. Fonctionnalités de base
+
+## [Cahier des charges](#sommaire) 
+### Fonctionnalités de base
 - **Création de tickets** : les utilisateurs peuvent créer des tickets pour signaler des problèmes au service IT
 - **Gestion des tickets** : les administrateurs peuvent gérer les tickets, y compris les supprimer ou assigner quelqu'un pour sa résolution
 - **Résolution des tickets** : les techniciens peuvent résoudre les tickets et changer leurs statuts
 - **Notification** : les utilisateurs sont notifiés des mises à jour sur leurs tickets
 - **Déploiement** : l'application sera déployé et sera associé à un pipeline qui permettra 
 
-## Spécificités 
+### Spécificités 
 
-### Roles 
+#### Roles 
 - **Employés** : Soumets des tickets, Check leurs avancement, Est notifé de son état
 
 
@@ -32,7 +33,7 @@ __Auteurs__ :
 
 - **Administrateur** : Gère, Assigne, Modifie et Peuvent analyser les tickets et les utilisateurs 
 
-### Technologies 
+#### Technologies 
 
 
 - **Fullstack** : Laravel
@@ -44,7 +45,7 @@ __Auteurs__ :
     - **Container** : Docker, jenkins
     - **CI/CD** : GitLab CI/CD
 
-## Taches : 
+## [Taches](#sommaire)  
 
 | Tache | Description | Assigné à | Statut | Notes du dernier ***~.X*** |
 |-------|-------------|-----------|--------|------------------|
@@ -71,7 +72,7 @@ Score Avancement = (0.87+ 0.78+ 0.99+ 0.65+ 0+ 0.6+ 0+ 0+ 0)/9
 - [ ] Contact the media
 
 
-## Demarrage de l'application 
+## [Demarrage de l'application](#sommaire)
 
 0. **Autorisations** : User : "Admin" // Mail : "admin@mail.com" // MDP : "admin1234"
 
