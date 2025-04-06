@@ -4,83 +4,81 @@ on:
   push:
     branches:
       - main
-      - votre-brancheranche # Remplacez "votre-branche" par le nom de votre branche
-  pull_request:t:
-    branches::
-      - main      - main
-      - votre-branche - votre-branche # Remplacez "votre-branche" par le nom de votre branche
-  workflow_dispatch: # Permet de déclencher manuellement le pipeline
+      - steve/docker-setup
+  pull_request:
+    branches:
+      - main
+      - steve/docker-setup
+  workflow_dispatch:
 
-jobs:  build:
-  build:ubuntu-latest
+jobs:
+  build:
     runs-on: ubuntu-latest
 
-    services:es:
+    services:
       postgres:
         image: postgres:15.4
         env:
-          POSTGRES_USER: userGRES_PASSWORD: password
-          POSTGRES_PASSWORD: password: iticket
+          POSTGRES_USER: user
+          POSTGRES_PASSWORD: password
           POSTGRES_DB: iticket
         ports:
           - 5432:5432
-        options: >-ready -U user -d iticket"
-          --health-cmd="pg_isready -U user -d iticket"10s
-          --health-interval=10s          --health-timeout=5s
-          --health-timeout=5shealth-retries=5
+        options: >-
+          --health-cmd="pg_isready -U user -d iticket"
+          --health-interval=10s
+          --health-timeout=5s
           --health-retries=5
 
       mysql:
         image: mysql:8.0
-        env:ORD: ""
-          MYSQL_ROOT_PASSWORD: ""_ITicket
-          MYSQL_DATABASE: db_ITicketL_USER: root
-          MYSQL_USER: rootORD: ""
-          MYSQL_PASSWORD: ""        ports:
-        ports:- 3306:3306
+        env:
+          MYSQL_ROOT_PASSWORD: ""
+          MYSQL_DATABASE: db_ITicket
+          MYSQL_USER: root
+          MYSQL_PASSWORD: ""
+        ports:
           - 3306:3306
 
-    steps:      - name: Checkout code
-      - name: Checkout codeeckout@v3
+    steps:
+      - name: Checkout code
         uses: actions/checkout@v3
- Set up PHP
-      - name: Set up PHP/setup-php@v2
+
+      - name: Set up PHP
         uses: shivammathur/setup-php@v2
-        with:.2
-          php-version: 8.2          extensions: intl, pdo_pgsql, pdo_mysql
+        with:
+          php-version: 8.2
           extensions: intl, pdo_pgsql, pdo_mysql
           coverage: none
+
       - name: Install Composer dependencies
-      - name: Install Composer dependenciesptimize-autoloader
         run: composer install --no-dev --optimize-autoloader
- Install Node.js dependencies
-      - name: Install Node.js dependenciesp-node@v3
+
+      - name: Install Node.js dependencies
         uses: actions/setup-node@v3
-        with:          node-version: 18
+        with:
           node-version: 18
       - run: npm install
-      - name: Build assets with Vite
+
       - name: Build assets with Vite
         run: npm run build
 
       - name: Run migrations
-        env:: pgsql
+        env:
           DB_CONNECTION: pgsql
           DB_HOST: 127.0.0.1
           DB_PORT: 5432
           DB_DATABASE: iticket
-          DB_USERNAME: user          DB_PASSWORD: password
-          DB_PASSWORD: passwordn migrate --force
+          DB_USERNAME: user
+          DB_PASSWORD: password
         run: php artisan migrate --force
 
       - name: Run tests
-        env:: pgsql
+        env:
           DB_CONNECTION: pgsql
           DB_HOST: 127.0.0.1
           DB_PORT: 5432
           DB_DATABASE: iticket
-          DB_USERNAME: user          DB_PASSWORD: password
-
-
-
-        run: php artisan test          DB_PASSWORD: password        run: php artisan test
+          DB_USERNAME: user
+          DB_PASSWORD: password
+        run: php artisan test
