@@ -27,8 +27,15 @@ class EmployeePanelProvider extends PanelProvider
             ->id('employee')
             ->path('employee')
             ->colors([
-                'primary' => Color::Amber,
+                'primary' => Color::Sky,
+                'danger' => Color::Red,
+                'gray' => Color::Zinc,
+                'info' => Color::Blue,
+                'success' => Color::Green,
+                'warning' => Color::Amber,
             ])
+            ->font('Inter')
+            ->darkMode(false) // Force light mode for better visibility
             ->discoverResources(in: app_path('Filament/Employee/Resources'), for: 'App\\Filament\\Employee\\Resources')
             ->discoverPages(in: app_path('Filament/Employee/Pages'), for: 'App\\Filament\\Employee\\Pages')
             ->pages([

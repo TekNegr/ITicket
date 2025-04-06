@@ -17,8 +17,7 @@ Route::get('/dashboard', function () {
     $redirectRoutes = [
         'admin' => 'filament.admin.pages.dashboard',
         'technicien' => 'filament.technicien.pages.dashboard',
-        'employee' => 'filament.employee.pages.dashboard',
-        'unknown' => 'dashboard',
+        'employee' => 'fliament.employee.pages.dashboard',
     ];
     $redirectRoute = $redirectRoutes[$role] ?? 'dashboard';
     return view($redirectRoute);
