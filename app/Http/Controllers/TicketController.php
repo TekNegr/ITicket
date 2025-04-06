@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Ticket;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use App\Models\User;
 
 use Illuminate\Support\Facades\Auth;
 
@@ -80,30 +81,38 @@ class TicketController extends Controller
     /**
      * Update the specified ticket in storage.
      */
-    public function update(Request $request, Ticket $ticket)
-    {
-        $validated = $request->validate([
-            'titre' => 'required|string|max:255',
-            'description' => 'required|string',
-            'statut' => 'required|in:Ouvert,En cours,Résolu,Fermé',
-            'priorite' => 'required|in:Faible,Moyenne,Élevée,Critique',
-            'id_employe' => 'required|exists:users,id',
-            'id_technicien' => 'nullable|exists:users,id',
-        ]);
-        dd($validated);
-
-        $ticket->update($validated);
-        $user =  Auth::user();
-        $role = $user->roles->first()->name ?? 'unknown';
-
-        $redirectRoute = [
-            'admin' => 'filament.admin.pages.dashboard',
-            'technicien' => 'filament.technicien.pages.dashboard',
-            'employee' => 'filament.employee.pages.ticket-employee',
-            'unknown' => 'dashboard',
-        ][$role] ?? 'dashboard';
-        return redirect()->route($redirectRoute)->with('success', 'Ticket mis à jour avec succès.');
-    }
+    
+     public function update(Request $request, Ticket $ticket)
+     {
+         $user = Auth::user();
+         $role = $user->roles->first()->name ?? 'unknown';
+     
+         if ($role === 'technicien') {
+             $validated = $request->validate([
+                 'statut' => 'required|in:Ouvert,En cours,Résolu,Fermé',
+             ]);
+     
+             $ticket->statut = $validated['statut'];
+             $ticket->save();
+     
+             return redirect()->back()->with('success', 'Statut mis à jour avec succès.');
+         }
+     
+         // autres rôles (admin, employee)
+         $validated = $request->validate([
+             'titre' => 'required|string|max:255',
+             'description' => 'required|string',
+             'statut' => 'required|in:Ouvert,En cours,Résolu,Fermé',
+             'priorite' => 'required|in:Faible,Moyenne,Élevée,Critique',
+             'id_employe' => 'required|exists:users,id',
+             'id_technicien' => 'nullable|exists:users,id',
+         ]);
+     
+         $ticket->update($validated);
+     
+         return redirect()->route('dashboard')->with('success', 'Ticket mis à jour avec succès.');
+     }
+     
 
     /**
      * Remove the specified ticket from storage.

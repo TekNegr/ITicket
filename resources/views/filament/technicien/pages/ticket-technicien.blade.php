@@ -48,17 +48,19 @@
                                 <td class="border border-gray-300 px-4 py-2">{{ $ticket->created_at->format('d/m/Y H:i') }}</td>
                                 <td class="border border-gray-300 px-4 py-2 flex flex-col space-y-2">
                                     <a href="{{ route('tickets.show', $ticket) }}" class="bg-blue-500 text-black px-3 py-1 rounded hover:bg-blue-600 text-center">Voir</a>
-                                    <form action="{{ route('tickets.update', $ticket) }}" method="POST" class="inline">
+                                    <form action="{{ route('tickets.update', $ticket->id) }}" method="POST">
                                         @csrf
-                                        @method('PUT')
-                                        <input type="hidden" name="statut" value="En cours">
-                                        <button type="submit" class="bg-yellow-500 text-black px-3 py-1 rounded hover:bg-yellow-600 w-full">Marquer comme En cours</button>
-                                    </form>
-                                    <form action="{{ route('tickets.update', $ticket) }}" method="POST" class="inline">
-                                        @csrf
-                                        @method('PUT')
-                                        <input type="hidden" name="statut" value="Résolu">
-                                        <button type="submit" class="bg-green-500 text-black px-3 py-1 rounded hover:bg-green-600 w-full">Marquer comme Résolu</button>
+                                        @method('PUT') {{-- C'EST ESSENTIEL --}}
+                                    
+                                        <label for="statut">Changer le statut :</label>
+                                        <select name="statut" id="statut" required>
+                                            <option value="Ouvert" {{ $ticket->statut == 'Ouvert' ? 'selected' : '' }}>Ouvert</option>
+                                            <option value="En cours" {{ $ticket->statut == 'En cours' ? 'selected' : '' }}>En cours</option>
+                                            <option value="Résolu" {{ $ticket->statut == 'Résolu' ? 'selected' : '' }}>Résolu</option>
+                                            <option value="Fermé" {{ $ticket->statut == 'Fermé' ? 'selected' : '' }}>Fermé</option>
+                                        </select>
+                                    
+                                        <button type="submit">Mettre à jour</button>
                                     </form>
                                 </td>
                             </tr>
