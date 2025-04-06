@@ -8,7 +8,6 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
-use Spatie\Permission\Traits\HasRoles;
 
 class AuthenticatedSessionController extends Controller
 {
@@ -29,21 +28,18 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        $role = Auth::user()->roles->first();
+        $user = Auth::user();
+        $role = $user->roles->first()->name ?? 'unknown';
+        $redirectRoutes = [
+            'admin' => 'filament.admin.pages.dashboard',
+            'technicien' => 'filament.technicien.pages.dashboard',
+            'employee' => 'filament.employee.pages.dashboard',
+            'unknown' => 'dashboard',
+        ];
+        $redirectRoute = $redirectRoutes[$role] ?? 'dashboard';
+        // $request->session()->flash('success', 'Bienvenue ' . $user->name . '!');
 
-        switch ($role) {
-            case 'admin':
-                return redirect()->route('filament.admin.pages.dashboard');
-            case 'technicien':
-                return redirect()->route('tickets.index');
-            case 'client':
-                return redirect()->route('home');
-            default:
-                Auth::logout();
-                return redirect()->route('login')->withErrors([
-                    'email' => 'Votre compte est en attente de validation.',
-                ]);
-        }
+        return redirect()->intended(route($redirectRoute, absolute: false));
     }
 
     /**
