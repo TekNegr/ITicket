@@ -55,13 +55,13 @@ __Auteurs__ :
 | Tickets | Mettre en place le system de Ticket | Jeff | En cours **(65%)** | Manque plus que le *TicketController et le connecter à une *Vue ***~H*** | 
 | Vues | Visuels et accès aux microservices | Steve (?) | A faire | **X** | 
 | Gestion Ressources | Permettre à l'admin la modification dynamique de la BDD | Henin | En cours **(60%)** | c.f *Permissions ***~H*** | 
-| Container | Mettre en place le container Docker | Steve |en cour | **X** | 
-| CICD | Mettre en place les pipelines github d'après deploiement | Steve  | en cour | **X** | 
+| Container | Mettre en place le container Docker | Steve |Terminer | **fonctionnel** | 
+| CICD | Mettre en place les pipelines github d'après deploiement | Steve  | en cour | **mise en place de la pipeline** | 
 | Compiling + Deploiement | Mettre l'application à disposition | ???/@all | en cour | **X** | 
 
-**Repartition** : Henin (3) ; Jeff (3) ; Steve (3)  -- **Avancement** : 43.22%
+**Repartition** : Henin (3) ; Jeff (3) ; Steve (3)  -- **Avancement** : 60.22%
 
-Score Avancement = (0.87+ 0.78+ 0.99+ 0.65+ 0+ 0.6+ 0+ 0+ 0)/9
+Score Avancement = (0.87+ 0.78+ 0.99+ 0.65+ 0+ 0.6+ 0.99+ 0.6+ 0)/9
 
 
 ## [Demarrage de l'application](#sommaire)
@@ -148,9 +148,17 @@ x.
 
       docker-compose exec app php artisan migrate
       ```
-5. Installez les dépendances front-end si nécessaire :
-         ```bash
-docker-compose exec php npm install vite laravel-vite-plugin --save-dev           docker-compose exec php npm run build                                                  
+### 5. Installation des dépendances front-end (si nécessaire)
+
+1. Installez les dépendances front-end :
+   ```bash
+   docker-compose exec php npm install vite laravel-vite-plugin --save-dev
+   ```
+
+2. Compilez les assets front-end :
+   ```bash
+   docker-compose exec php npm run build
+   ```           
          ```
          - **Vite** : Assurez-vous que le serveur de développement Vite est opérationnel pour le rendu des assets front-end.
 
