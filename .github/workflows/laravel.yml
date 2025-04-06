@@ -73,6 +73,9 @@ jobs:
           DB_PASSWORD: password
         run: php artisan migrate --force
 
+      - name: Install PHPUnit
+        run: composer require --dev phpunit/phpunit
+
       - name: Run tests
         env:
           DB_CONNECTION: pgsql
