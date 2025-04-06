@@ -3,13 +3,25 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TicketController;
+use Illuminate\Support\Facades\Auth;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+
+    $user = Auth::user();
+    $role = $user->roles->first()->name ?? 'unknown';
+
+    $redirectRoutes = [
+        'admin' => 'filament.admin.pages.dashboard',
+        'technicien' => 'filament.technicien.pages.dashboard',
+        'employee' => 'filament.employee.pages.dashboard',
+        'unknown' => 'dashboard',
+    ];
+    $redirectRoute = $redirectRoutes[$role] ?? 'dashboard';
+    return view($redirectRoute);
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {

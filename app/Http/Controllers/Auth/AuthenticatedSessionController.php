@@ -28,7 +28,18 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->intended(route('dashboard', absolute: false));
+        $user = Auth::user();
+        $role = $user->roles->first()->name ?? 'unknown';
+        $redirectRoutes = [
+            'admin' => 'filament.admin.pages.dashboard',
+            'technicien' => 'filament.technicien.pages.dashboard',
+            'employee' => 'filament.employee.pages.dashboard',
+            'unknown' => 'dashboard',
+        ];
+        $redirectRoute = $redirectRoutes[$role] ?? 'dashboard';
+        // $request->session()->flash('success', 'Bienvenue ' . $user->name . '!');
+
+        return redirect()->intended(route($redirectRoute, absolute: false));
     }
 
     /**
