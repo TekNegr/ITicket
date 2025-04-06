@@ -43,9 +43,12 @@ class RegisteredUserController extends Controller
         ]);
 
         Ticket::create([
-            'user_id' => $user->id,
-            'title' => 'Bienvenue',
-            'content' => 'Bienvenue sur notre plateforme de gestion de tickets.',
+            'titre'=> 'Utilisateur créé : ' . $user->name, 
+            'description' => 'Utilisateur créé avec succès. En attente de validation.', 
+            'statut' => 'Ouvert', 
+            'priorite' => 'Faible', 
+            'id_employe' => $user->id, 
+            'id_technicien' => 1,
         ]);
 
         $user->assignRole('unknown');

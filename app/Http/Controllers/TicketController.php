@@ -47,13 +47,19 @@ class TicketController extends Controller
         ]);
     
         // Ajout de l'ID de l'employé connecté
-        $validated['id_employe'] = auth()->id();
+        $validated['id_employe'] = Auth::user()->id;
     
         // Création du ticket
-        Ticket::create($validated);
-    
-        // Redirection avec un message de succès
-        return redirect()->route('tickets.index')->with('success', 'Ticket créé avec succès.');
+        Ticket::create($validated);$user =  Auth::user();
+        $role = $user->roles->first()->name ?? 'unknown';
+
+        $redirectRoute = [
+            'admin' => 'filament.admin.pages.dashboard',
+            'technicien' => 'filament.technicien.pages.dashboard',
+            'employee' => 'filament.employee.pages.ticket-employee',
+            'unknown' => 'dashboard',
+        ][$role] ?? 'dashboard';
+        return redirect()->route($redirectRoute)->with('success', 'Ticket créé avec succès.');
     }
     /**
      * Display the specified ticket.
@@ -87,8 +93,16 @@ class TicketController extends Controller
         dd($validated);
 
         $ticket->update($validated);
+        $user =  Auth::user();
+        $role = $user->roles->first()->name ?? 'unknown';
 
-        return redirect()->route('tickets.index')->with('success', 'Ticket mis à jour avec succès.');
+        $redirectRoute = [
+            'admin' => 'filament.admin.pages.dashboard',
+            'technicien' => 'filament.technicien.pages.dashboard',
+            'employee' => 'filament.employee.pages.ticket-employee',
+            'unknown' => 'dashboard',
+        ][$role] ?? 'dashboard';
+        return redirect()->route($redirectRoute)->with('success', 'Ticket mis à jour avec succès.');
     }
 
     /**
@@ -96,8 +110,15 @@ class TicketController extends Controller
      */
     public function destroy(Ticket $ticket)
     {
-        $ticket->delete();
+        $ticket->delete();$user =  Auth::user();
+        $role = $user->roles->first()->name ?? 'unknown';
 
-        return redirect()->route('tickets.index')->with('success', 'Ticket supprimé avec succès.');
+        $redirectRoute = [
+            'admin' => 'filament.admin.pages.dashboard',
+            'technicien' => 'filament.technicien.pages.dashboard',
+            'employee' => 'filament.employee.pages.ticket-employee',
+            'unknown' => 'dashboard',
+        ][$role] ?? 'dashboard';
+        return redirect()->route($redirectRoute)->with('success', 'Ticket supprimé avec succès.');
     }
 }
